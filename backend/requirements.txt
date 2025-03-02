@@ -7,3 +7,4 @@ xgboost
 jupyter
 flask
 pytest
+flask_cors
