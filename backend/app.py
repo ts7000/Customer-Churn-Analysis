@@ -4,8 +4,10 @@ import numpy as np
 import logging
 import traceback
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)

@@ -4,9 +4,9 @@ import json
 # ✅ Use your Render URL (replace with your actual Render service URL)
 url = "https://customer-churn-analysis-iwp3.onrender.com/predict"
 
-# ✅ Sample data to send (adjust based on your model's feature requirements)
+# ✅ Sample data to send (adjust based on  model's feature requirements)
 data = {
-    "features": [60, 0, 1, 0, 1, 0, 10.5, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+"features": [25, 1, 0, 1, 0, 1, 95.0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 15]
 }
 
 try:
