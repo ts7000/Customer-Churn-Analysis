@@ -1,24 +1,23 @@
 import requests
 import json
 
-# URL of the Flask API
-url = "http://127.0.0.1:5000/predict"
+# ✅ Use your Render URL (replace with your actual Render service URL)
+url = "https://customer-churn-analysis-iwp3.onrender.com/predict"
 
-# Sample data to send to the API
+# ✅ Sample data to send (adjust based on your model's feature requirements)
 data = {
-    "features": [60, 0, 1, 0, 1, 0, 10.5, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]  # Adjusted values
+    "features": [60, 0, 1, 0, 1, 0, 10.5, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
 }
+
 try:
-    # Send POST request
-    print("Sending POST request...")
+    print("🔹 Sending POST request to API...")
     response = requests.post(url, json=data)
-    
-    # Print the response status code
-    print(f"Status Code: {response.status_code}")
-    
-    # Print the response from the API
-    print(f"Response Text: {response.text}")
-    
+
+    print(f"🔹 Status Code: {response.status_code}")
+    if response.status_code == 200:
+        print(f"✅ Prediction Response: {response.json()}")
+    else:
+        print(f"❌ Error Response: {response.text}")
+
 except requests.exceptions.RequestException as e:
-    # Print any error that occurs
-    print(f"Error: {e}")
+    print(f"❌ Request Error: {e}")
