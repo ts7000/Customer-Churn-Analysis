@@ -7,11 +7,22 @@ const App = () => {
         age: 55,
         gender: 1, // 1 = Male, 0 = Female
         partner: 0, // 1 = Yes, 0 = No
+        dependents: 1, // Added Missing Feature
         tenure: 2.0,
-        multipleServices: 1, // 1 = Yes, 0 = No
-        customerComplaints: 1, // 1 = Yes, 0 = No
-        irregularPayments: 1, // 1 = Yes, 0 = No
-        lateFees: 20
+        phoneService: 1, // Added Missing Feature
+        multipleLines: 0, // Added Missing Feature
+        internetService: 1, // Added Missing Feature
+        onlineSecurity: 0, // Added Missing Feature
+        onlineBackup: 1, // Added Missing Feature
+        deviceProtection: 0, // Added Missing Feature
+        techSupport: 1, // Added Missing Feature
+        streamingTV: 0, // Added Missing Feature
+        streamingMovies: 1, // Added Missing Feature
+        contract: 0, // Added Missing Feature
+        paperlessBilling: 1, // Added Missing Feature
+        paymentMethod: 0, // Added Missing Feature
+        monthlyCharges: 1, // Added Missing Feature
+        totalCharges: 0, // Added Missing Feature
     });
 
     const [prediction, setPrediction] = useState(null);
@@ -29,7 +40,7 @@ const App = () => {
         setLoading(true); // Show loader
 
         try {
-            const featuresArray = Object.values(formData);
+            const featuresArray = Object.values(formData); // Now sending 19 features
             const response = await axios.post("https://customer-churn-analysis-iwp3.onrender.com/predict", {
                 features: featuresArray,
             });
@@ -61,29 +72,92 @@ const App = () => {
                     <option value={0}>No</option>
                 </select>
 
+                <label>Dependents:</label>
+                <select name="dependents" value={formData.dependents} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
                 <label>Tenure (months):</label>
                 <input type="number" name="tenure" value={formData.tenure} onChange={handleChange} required />
 
-                <label>Multiple Services:</label>
-                <select name="multipleServices" value={formData.multipleServices} onChange={handleChange}>
+                <label>Phone Service:</label>
+                <select name="phoneService" value={formData.phoneService} onChange={handleChange}>
                     <option value={1}>Yes</option>
                     <option value={0}>No</option>
                 </select>
 
-                <label>Customer Complaints:</label>
-                <select name="customerComplaints" value={formData.customerComplaints} onChange={handleChange}>
+                <label>Multiple Lines:</label>
+                <select name="multipleLines" value={formData.multipleLines} onChange={handleChange}>
                     <option value={1}>Yes</option>
                     <option value={0}>No</option>
                 </select>
 
-                <label>Irregular Payments:</label>
-                <select name="irregularPayments" value={formData.irregularPayments} onChange={handleChange}>
+                <label>Internet Service:</label>
+                <select name="internetService" value={formData.internetService} onChange={handleChange}>
+                    <option value={1}>Fiber Optic</option>
+                    <option value={0}>DSL</option>
+                </select>
+
+                <label>Online Security:</label>
+                <select name="onlineSecurity" value={formData.onlineSecurity} onChange={handleChange}>
                     <option value={1}>Yes</option>
                     <option value={0}>No</option>
                 </select>
 
-                <label>Late Fees:</label>
-                <input type="number" name="lateFees" value={formData.lateFees} onChange={handleChange} required />
+                <label>Online Backup:</label>
+                <select name="onlineBackup" value={formData.onlineBackup} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Device Protection:</label>
+                <select name="deviceProtection" value={formData.deviceProtection} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Tech Support:</label>
+                <select name="techSupport" value={formData.techSupport} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Streaming TV:</label>
+                <select name="streamingTV" value={formData.streamingTV} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Streaming Movies:</label>
+                <select name="streamingMovies" value={formData.streamingMovies} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Contract:</label>
+                <select name="contract" value={formData.contract} onChange={handleChange}>
+                    <option value={1}>One Year</option>
+                    <option value={0}>Month-to-Month</option>
+                </select>
+
+                <label>Paperless Billing:</label>
+                <select name="paperlessBilling" value={formData.paperlessBilling} onChange={handleChange}>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
+                </select>
+
+                <label>Payment Method:</label>
+                <select name="paymentMethod" value={formData.paymentMethod} onChange={handleChange}>
+                    <option value={1}>Credit Card</option>
+                    <option value={0}>Bank Transfer</option>
+                </select>
+
+                <label>Monthly Charges:</label>
+                <input type="number" name="monthlyCharges" value={formData.monthlyCharges} onChange={handleChange} required />
+
+                <label>Total Charges:</label>
+                <input type="number" name="totalCharges" value={formData.totalCharges} onChange={handleChange} required />
 
                 <button type="submit" disabled={loading}>
                     {loading ? "Predicting..." : "Predict"}
