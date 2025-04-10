@@ -58,7 +58,7 @@ const App = () => {
             <h1>Customer Churn Prediction</h1>
             <form onSubmit={handlePredict}>
                 <label>Age:</label>
-                <input type="number" name="age" value={formData.age} onChange={handleChange} required />
+                <input type="number" name="age" min="0" value={formData.age} onChange={handleChange} required />
 
                 <label>Gender:</label>
                 <select name="gender" value={formData.gender} onChange={handleChange}>
